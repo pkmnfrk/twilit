@@ -1,0 +1,51 @@
+PARAM reason                                        %accept a parameter placed in a variable "reason"
+
+LABEL start                                         %a place to jump to
+
+SAY Alert from Sensei.                              %spoken dialogue
+SAY A user has requested emergency assistance.
+PAUSE 1                                             %pause for 1 second    
+SAY $reason                                         %in principle, this could be inline with other text
+PAUSE 1
+
+LABEL choices
+
+SAY To accept this alert, press 1.                  %this is all just text
+SAY To ignore this alert, press 2.
+SAY To hear this alert again, press 3.
+
+GATHER action 1                                     %input a number one digit long, put it in the "action" variable.
+
+IF $action == 1        
+    SAY Thank you. We will see you on Slack.
+    EVENT accept                                    %let external code know that something interesting happened
+ELSEIF $action == 2
+    SAY Okay, we will leave you alone.
+    EVENT reject                                    %events are completely arbitrary
+ELSEIF $action == 3
+    GOTO start                                      %hahaha you will never escape unconditional jumps!
+ELSE
+    SAY I'm sorry, but that is not a valid option.
+    GOTO choices
+ENDIF
+
+                                                    %once you fall off the bottom, it's all over
+													
+IF 1 == 1
+	SAY single if clause
+ENDIF
+
+IF 1 == 1
+	SAY elseif if clause
+ELSEIF 1 == 2
+	SAY elseif elseif clause
+ENDIF
+
+IF 1 == 1
+	SAY else if clause
+ELSE
+	SAY else else clause
+ENDIF
+
+
+SAY EOF

@@ -1,0 +1,14 @@
+{
+  "name": "twilit",
+  "version": "1.0.0",
+  "description": "Twilio high level language",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "Mike Caron",
+  "license": "ISC",
+  "dependencies": {
+    "eol": "^0.5.1"
+  }
+}
